@@ -106,7 +106,5 @@ invalid host name) you will have to fix it yourself. Some recomendations::
     $ edit path/to/your/project/.git/config
     $ git help
 
-.. _id1:
-
 Wiz1t wk t0 << some QiK tipz:
 http://wiki.github.com/smyrman/gitsy/
