@@ -25,7 +25,7 @@ help)
 push)
 	for repo in ${REPOS[@]}; do
 		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
-		cd $HOME/$repo && git add . && git commit -m "autocommit on $(date)" && \
+		cd $HOME/$repo && git add . && git commit -a -m "autocommit on $(date)" && \
 			git push origin master
 	done
 ;;
