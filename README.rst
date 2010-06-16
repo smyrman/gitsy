@@ -8,7 +8,7 @@ host, (or between two local hosts), and to automatically add and commit all
 changes before each push.
 
 *WARNING*: This script was created for my own private usage, but it might be of
-use to others as well (For example you).
+use to others as well (for example you). It iz releasd under BSD.
 
 Typically I would recommend to use this tool for syncing your documents and
 configuration files, but not for large binary files such as music and videos (or
@@ -47,7 +47,7 @@ Adding a directory to be synced by gitsy
 ----------------------------------------
 
 1. To setup a new directory to be synced by gitsy, do the following on your
-   local machine (given that the folder $home/project1 exist, and include some
+   local machine (given that the folder $HOME/project1 exist, and include some
    content other then empty folders)::
 
     $ gitsy init project1
@@ -104,3 +104,5 @@ invalid host name) you will have to fix it yourself. Some recomendations::
     $ edit path/to/your/project/.git/config
     $ git help
 
+Wiz1t wk t0 << some QiK tipz:
+http://wiki.github.com/smyrman/gitsy/
