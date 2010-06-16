@@ -15,6 +15,7 @@ configuration files, but not for large binary files such as music and videos (or
 anything of that kind). I would also NOT recommend that you use it to sync your
 entire home directory.
 
+.. _`Install & configure`:
 ===================
 Install & configure
 ===================
@@ -32,6 +33,7 @@ Install & configure
 
 4. modify .gitsyrc to your liking.
 
+.. _5:
 5. make sure that the directory described by REMOTE_HOST, REMOTE_USER and
    REMOTE_DIR exist.
 
@@ -75,9 +77,9 @@ But that only gives me backup :*( I wanted sync!
 ------------------------------------------------
 
 1. On a second machine (say for instance at the server configured to
-   REMOTE_HOST in 5), setup gitsy as described in INSTALLATION. Set up
-   REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use instead
-   of repos).
+   REMOTE_HOST in 5_), setup gitsy as described in `Install & Configure`_. Set
+   up REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use
+   instead of repos).
 
 2. Since 'project1' already exist in $HOME/repos, we will now issue::
 
