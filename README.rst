@@ -15,12 +15,11 @@ configuration files, but not for large binary files such as music and videos (or
 anything of that kind). I would also NOT recommend that you use it to sync your
 entire home directory.
 
-.. _install:
-
 ===================
 Install & configure
 ===================
 
+.. _install:
 1. First of all, git must be installed and configured, i.e., after installing
    git, issue::
 
