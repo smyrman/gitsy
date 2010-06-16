@@ -9,7 +9,7 @@ use to others as well (For example you).
 
 Typically I would recomend to use this tool for syncing your documents and
 configuration files, but not for large binary files such as music and videos (or
-anythin of that kind). I would also NOT recomend that you use it to trac your
+anythin of that kind). I would also NOT recomend that you use it to synck your
 entire home directory.
 
 # INSTALL AND CONFIGURE
@@ -50,7 +50,7 @@ It will also use 'sed' to add "project1" to the REPOS variable in:
 "$HOME/.gitsyrc"
 
 IMPORTANT: If you wan't to initialize and add a repository for sync, not
-located in $HOME, you must do it manually manualy:
+located in $HOME, you must do it manually:
   $ cd path/to/repo/projectx
   $ git init
   $ git remote add origin user@example.com:your_repos_dir/projectx
