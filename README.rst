@@ -1,5 +1,5 @@
 ===================
-Whait is <*GiTsY*>?
+Whait is <-GiTsY->?
 ===================
 
 Gitsy is a simple and stupid backup and synchronization tool on top of Git. It
