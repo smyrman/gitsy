@@ -19,7 +19,7 @@ entire home directory.
 Install & configure
 ===================
 
-.. _install:
+_`install`
 1. First of all, git must be installed and configured, i.e., after installing
    git, issue::
 
