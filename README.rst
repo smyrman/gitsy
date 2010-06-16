@@ -52,9 +52,13 @@ Adding a directory to be synced by gitsy
 
     $ gitsy init project1
 
-This command will set up a git repository at "$HOME/project1", and a 'bare'
-repository at "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git".
-It will also use 'sed' to add "project1" to the REPOS variable in "$HOME/.gitsyrc".
+   This command will set up a git repository at "$HOME/project1", and a 'bare'
+   repository at "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git".
+   It will also use 'sed' to add "project1" to the REPOS variable in "$HOME/.gitsyrc".
+
+2. Next thing is to push the repository to the remote host::
+
+    $ gitsy push
 
 *IMPORTANT*: If you wan't to initialize and add a repository for sync, not
 located in $HOME, you must do this manually::
@@ -65,10 +69,6 @@ located in $HOME, you must do this manually::
     $ ssh user@example.com git init --bare your_repos_dir/projectx
     $ cd
     $ edit .gitsyrc # add path/to/repo/projectx to REPOS (which is a bash array).
-
-2. Next thing is to push the repository to the remote host::
-
-    $ gitsy push
 
 
 But that only gives me backup :*( I wanted sync!
