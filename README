@@ -15,8 +15,9 @@ entire home directory.
 # INSTALL AND CONFIGURE
 
 1. First of all, git must be installed and configured, i.e., after installing git, issue:
-   $ git configure --globaluser.name "your name" and
-   $ git configure --global user.email youremail@example.com on local and remote host.
+   $ git config --global user.name "your name"
+   $ git config --global user.email youremail@example.com
+   $ git config --global color.ui auto # optional!
 
 2. Copy gitsy to somewhere on your $PATH.
 
