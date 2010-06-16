@@ -53,8 +53,8 @@ Adding a directory to be synced by gitsy
     $ gitsy init project1
 
    This command will set up a git repository at "$HOME/project1", and a 'bare'
-   repository at "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git".
-   It will also use 'sed' to add "project1" to the REPOS variable in "$HOME/.gitsyrc".
+   repository at "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git". It will
+   also use 'sed' to add project1 to the REPOS variable in "$HOME/.gitsyrc".
 
 2. Next thing is to push the repository to the remote host::
 
@@ -74,7 +74,7 @@ located in $HOME, you must do this manually::
 But that only gives me backup :*( I wanted sync!
 ------------------------------------------------
 
-1. On a second local machine (say for instance at the server configured to
+1. On a second machine (say for instance at the server configured to
    REMOTE_HOST in 5), setup gitsy as described in INSTALLATION. Set up
    REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use instead
    of repos).
