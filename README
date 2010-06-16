@@ -1,15 +1,15 @@
 # WHAT IS GITSY?
-Gitsy is a simple and stupid backup and syncronization tool on top of Git. It
-allowes you to push and pull multiple repositories between a local and a remote
-host, (or betwenn two local hosts), and to automatically add and commit all
+Gitsy is a simple and stupid backup and synchronization tool on top of Git. It
+allows you to push and pull multiple repositories between a local and a remote
+host, (or between two local hosts), and to automatically add and commit all
 changes before each push.
 
 WARNING: This script was created for my own private usage, but it might be of
 use to others as well (For example you).
 
-Typically I would recomend to use this tool for syncing your documents and
+Typically I would recommend to use this tool for syncing your documents and
 configuration files, but not for large binary files such as music and videos (or
-anythin of that kind). I would also NOT recomend that you use it to synck your
+anything of that kind). I would also NOT recommend that you use it to sync your
 entire home directory.
 
 # INSTALL AND CONFIGURE
@@ -18,7 +18,7 @@ entire home directory.
    $ git configure --globaluser.name "your name" and
    $ git configure --global user.email youremail@example.com on local and remote host.
 
-2. Copy gitsy to somewhee on your $PATH.
+2. Copy gitsy to somewhere on your $PATH.
 
 3. copy gitsyrc to "$HOME/.gitsyrc".
 
@@ -30,36 +30,33 @@ entire home directory.
 
 # USAGE
 Given that you have used ssh-keygen and ssh-copy-id to allow no-password login
-to the remote host (Not required, but recomended as it will save you from
-typing your password a milion times), You are ready to go:
+to the remote host (Not required, but recommended as it will save you from
+typing your password a million times), You are ready to go:
 
 To setup a new directory to be synced by gitsy, do the following on your local
-machine (given that the folder $home/.../project1 exist, and include some
-content other then empty folders):
+machine (given that the folder $home/project1 exist, and include some content
+other then empty folders):
 
 $ gitsy init project1
 
 Next thing is to push the repository to the remote host:
 $ gitsy push
 
-This command will set up a git repository at:
-"$HOME/project1"
-and a 'bare' repository at:
-"$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git"
-It will also use 'sed' to add "project1" to the REPOS variable in:
-"$HOME/.gitsyrc"
+This command will set up a git repository at "$HOME/project1", and a 'bare'
+repository at "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git".
+It will also use 'sed' to add "project1" to the REPOS variable in "$HOME/.gitsyrc".
 
 IMPORTANT: If you wan't to initialize and add a repository for sync, not
-located in $HOME, you must do it manually:
+located in $HOME, you must do this manually:
   $ cd path/to/repo/projectx
   $ git init
   $ git remote add origin user@example.com:your_repos_dir/projectx
   $ ssh user@example.com git init --bare your_repos_dir/projectx
   $ cd
-  $ edit .gitsyrc # add path/to/repo/projectx to REPOS (Wich is a bash array).
+  $ edit .gitsyrc # add path/to/repo/projectx to REPOS (Which is a bash array).
 
 
-# BUT TNHAT ONLY GIVES ME BACKUP :*( I WANTED SYNC!
+# BUT THAT ONLY GIVES ME BACKUP :*( I WANTED SYNC!
 On a second local machine (say for instance at the server configured to
 REMOTE_HOST in 5), setup gitsy as described in INSTALLATION. Set up
 REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use instead of
@@ -70,10 +67,10 @@ $ gitsy clone project1
 
 This will clone project1 to $HOME, and add project1 to REPOS.
 
-The rest of gitsy'c commands, include:
+The rest of gitsy's commands, are:
 gitsy status
 gitsy pull
-gitsy
+gitsy help
 
 # OH NO, I SCREWED UP!
 Gitsy is simple and stupid, and if you do soemthing wrong, (like configuring an
