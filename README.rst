@@ -19,7 +19,6 @@ entire home directory.
 Install & configure
 ===================
 
-_`install`
 1. First of all, git must be installed and configured, i.e., after installing
    git, issue::
 
@@ -77,12 +76,9 @@ But that only gives me backup :*( I wanted sync!
 ------------------------------------------------
 
 1. On a second machine (say for instance at the server configured to
-   REMOTE_HOST in `5`__), setup gitsy as described in `Install & configure`__.
-   Set up REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use
-   instead of repos).
-
-__ `install`_
-__ `install`_
+   REMOTE_HOST in 5), setup gitsy as described in Install & configure.  Set up
+   REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use instead
+   of repos).
 
 2. Since 'project1' already exist in $HOME/repos, we will now issue::
 
@@ -110,5 +106,7 @@ invalid host name) you will have to fix it yourself. Some recomendations::
     $ edit path/to/your/project/.git/config
     $ git help
 
-[*] Wiz1t wk t0 << some QiK tipz:
+.. _id1:
+
+Wiz1t wk t0 << some QiK tipz:
 http://wiki.github.com/smyrman/gitsy/
