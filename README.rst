@@ -15,9 +15,9 @@ configuration files, but not for large binary files such as music and videos (or
 anything of that kind). I would also NOT recommend that you use it to sync your
 entire home directory.
 
-===================
-Install & configure
-===================
+======================
+_`Install & configure`
+======================
 
 1. First of all, git must be installed and configured, i.e., after installing
    git, issue::
@@ -32,7 +32,7 @@ Install & configure
 
 4. modify .gitsyrc to your liking.
 
-5. make sure that the directory described by REMOTE_HOST, REMOTE_USER and
+_`5`. make sure that the directory described by REMOTE_HOST, REMOTE_USER and
    REMOTE_DIR exist.
 
 
@@ -76,7 +76,7 @@ But that only gives me backup :*( I wanted sync!
 ------------------------------------------------
 
 1. On a second machine (say for instance at the server configured to
-   REMOTE_HOST in 5__), setup gitsy as described in `Install & configure`_. Set
+   REMOTE_HOST in 5_), setup gitsy as described in `Install & configure`_. Set
    up REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use
    instead of repos).
 
@@ -86,7 +86,6 @@ But that only gives me backup :*( I wanted sync!
 
 This will clone project1 to $HOME, and add project1 to REPOS.
 
-__ `Install & configure`_
 
 
 The rest of gitsy's commands
@@ -107,5 +106,5 @@ invalid host name) you will have to fix it yourself. Some recomendations::
     $ edit path/to/your/project/.git/config
     $ git help
 
-Wiz1t wk t0 << some QiK tipz:
+[*] Wiz1t wk t0 << some QiK tipz:
 http://wiki.github.com/smyrman/gitsy/
