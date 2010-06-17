@@ -1,0 +1,76 @@
+#!/bin/bash
+source $HOME/.gitsyrc
+
+case $1 in
+
+	help)
+	echo -e "USAGE:\n  gitsy SUBCOMMAND"
+	echo -e "\nAvaileble SUBBCOMMANDS:"
+	echo -e "  help    show this text"
+	echo -e "  pull    update all repos from remote location"
+	echo -e "  push    add/commit all changes and push to remote location"
+	echo -e "  status  Show local status for all repos"
+	echo -e "  init REPO   Initialize new repo localy and on remote"
+	echo -e "  clone REPO  First-time clone of an existing repo from remote"
+	echo -e "\nNote that REPO must *always* be a relative path description from"\
+	        "your user's home directory"
+;;
+	push)
+	for repo in ${REPOS[@]}; do
+		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
+		cd $HOME/$repo && git add . && git commit -m "autocommit on $(date)" && \
+			git push origin master
+	done
+;;
+	pull)
+	for repo in ${REPOS[@]}; do
+		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
+		cd $HOME/$repo && git pull origin master
+	done
+;;
+	status)
+	for repo in ${REPOS[@]}; do
+		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
+		cd $HOME/$repo && git status
+	done
+;;
+	init)
+	[[ "$2" == "" ]] && \
+		echo -e "$0: REPO must be specifed! (Try '$0 help')" && exit 1
+	cd $HOME/$2
+	git init
+	if [ "REMOTE_HOST" ]; then
+		ssh $REMOTE_USER@$REMOTE_HOST git init --bare $REMOTE_DIR/$2.git
+		git remote add origin $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/$2.git
+	else
+		git init --bare $REMOTE_DIR/$2.git
+		git add remote origin $REMOTE_DIR/$2.git
+	fi
+	git add .
+	git commit -a -m "gsync.sh initial commit"
+
+	# Add $2 to REPOS:
+	sed "s|^REPOS=(\(.*\))|REPOS=(\1 '$2')|" < $HOME/.gitsyrc > /tmp/gitsyrc
+	mv /tmp/gitsyrc $HOME/.gitsyrc
+;;
+	clone)
+	[[ "$2" == "" ]] && \
+		echo -e "$0: REPO must be specifed! (Try '$0 help')" && exit 1
+	cd $HOME
+	if [ "REMOTE_HOST" ]; then
+		git clone $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/$2.git
+	else
+		git clone $REMOTE_DIR/$2.git
+	fi
+	git add .
+	git commit -a -m
+
+	# Add $2 to REPOS:
+	sed "s|^REPOS=(\(.*\))|REPOS=(\1 '$2')|" < $HOME/.gitsyrc > /tmp/gitsyrc
+	mv /tmp/gitsyrc $HOME/.gitsyrc
+;;
+
+	*)
+	echo "$0: Subcommand '$1' not found! (Try '$0 help')" && exit 1
+;;
+esac
