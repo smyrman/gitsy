@@ -1,23 +1,46 @@
 #!/bin/bash
 # # Copyright 2010: Sindre Røkenes Myren | smyrman -at- gmail -dot- com
-# Gitsy is open source, and is release under the BSD Licens se the file COPYING
-# for more information.
+# Gitsy is open source, and is release under the BSD License. See the file
+# COPYING for more information.
+
 source $HOME/.gitsyrc
+
+
+## Helper functions ##
+
+# Add repository to REPOS in ~/.gitsyrc
+function add2repos {
+	# Check if $1 is already in REPOS:
+	exists=false
+	for i in ${REPOS[@]}; do [[ "$i" == "$1" ]] && exists=true && break; done
+	# Add $1 to REPOS:
+	if [ $exists == false ]; then
+		echo "# Adding '$1' to REPOS in ~/.gitsyrc"
+		sed "s|^REPOS=(\(.*\))|REPOS=(\1 '$1')|" < $HOME/.gitsyrc > /tmp/gitsyrc
+		mv /tmp/gitsyrc $HOME/.gitsyrc
+	else
+		echo "# '$1' already in REPOS in ~/.gitsyrc"
+	fi
+}
+
+
+## Main switch case (argument check) ##
 
 case $1 in
 # Print help and exit
 help)
 	echo -e "USAGE:\n  gitsy SUBCOMMAND"
-	echo -e "\nAvaileble SUBBCOMMANDS:"
+	echo -e "Note that Gitsy is *never* affected by the pwd of the shell!"
+	echo -e "For the init command, note that REPO must be the name of a"\
+	        "folder in your home directory. To add folders outside your"\
+	        "home dir, see the README."
+	echo -e "\nAvailable SUBBCOMMANDS:"
 	echo -e "  help    show this text"
 	echo -e "  pull    update all repos from remote location"
 	echo -e "  push    add/commit all changes and push to remote location"
 	echo -e "  status  Show local status for all repos"
-	echo -e "  init REPO   Initialize new repo localy and on remote"
+	echo -e "  init REPO   Initialize new repo locally and on remote"
 	echo -e "  clone REPO  First-time clone of an existing repo from remote"
-	echo -e "\nNote for git init: that REPO must be the name of a folder in"\
-		"your home directory. To add folders outside your home dir, see"\
-	        "README."
 	exit
 ;;
 
@@ -46,7 +69,7 @@ status)
 	done
 ;;
 
-# initialize a new repository localy, and at remote. Add the new repository to
+# initialize a new repository locally, and at remote. Add the new repository to
 # REPOS in .gitsyrc
 init)
 	[[ "$2" == "" ]] && \
@@ -66,9 +89,7 @@ init)
 	echo "# Performing '$ git add .' at localhost"
 	git add .
 	# Add $2 to REPOS:
-	echo "# Adding '$2' to REPOS"
-	sed "s|^REPOS=(\(.*\))|REPOS=(\1 '$2')|" < $HOME/.gitsyrc > /tmp/gitsyrc
-	mv /tmp/gitsyrc $HOME/.gitsyrc
+	add2repos "$2"
 ;;
 
 # Clone an existing repository from remote. Add the repository to REPOS in
@@ -83,9 +104,7 @@ clone)
 		git clone $REMOTE_DIR/$2.git
 	fi
 	# Add $2 to REPOS:
-	echo "# Adding '$2' to REPOS"
-	sed "s|^REPOS=(\(.*\))|REPOS=(\1 '$2')|" < $HOME/.gitsyrc > /tmp/gitsyrc
-	mv /tmp/gitsyrc $HOME/.gitsyrc
+	add2repos "$2"
 ;;
 
 # Invalid  or missing command
