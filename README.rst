@@ -4,11 +4,12 @@ What is <-GiTsY->?
 
 Gitsy is a simple and stupid backup and synchronization tool on top of Git. It
 allows you to push and pull multiple repositories between a local and a remote
-host, (or between two local hosts), and to automatically add and commit all
-changes before each push.
+host, or between two local hosts; it will automatically add and commit all
+changes to all tracked repositories before each push.
 
 *WARNING*: This script was created for my own private usage, but it might be of
-use to others as well (for example you). It iz released under BSD.
+use to others as well (for example you). It is released under the same license
+as Git, which is GPL2.
 
 Typically I would recommend to use this tool for syncing your documents and
 configuration files, but not for large binary files such as music and videos (or

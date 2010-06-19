@@ -1,7 +1,7 @@
 #!/bin/bash
 # # Copyright 2010: Sindre Røkenes Myren | smyrman -at- gmail -dot- com
-# Gitsy is open source, and is release under the BSD License. See the file
-# COPYING for more information.
+# This program, Gitsy, is release under the GPL2 Licencs. See the file COPYING
+# for more information.
 
 source $HOME/.gitsyrc
 

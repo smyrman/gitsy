@@ -1,6 +1,6 @@
 # Copyright 2010: Sindre Røkenes Myren  (smyrman -at- gmail -dot- com)
-# This file is part of the Gitsy project which is released under the BSD
-# License.  See the file COPYING for more information.
+# This file is part of the Gitsy project which is released under GPL2. See the
+# file COPYING for more information.
 
 # Must be relative paths from your user's home directory!  Must not contain
 # spaces before the REPOS= part, as then 'sed' will not be able to find it and
