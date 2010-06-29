@@ -98,7 +98,7 @@ clone)
 	[[ "$2" == "" ]] && \
 		echo -e "$0: REPO must be specifed! (Try '$0 help')" && exit 1
 	cd $HOME
-	if [ "REMOTE_HOST" ]; then
+	if [ "$REMOTE_HOST" ]; then
 		git clone $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/$2.git
 	else
 		git clone $REMOTE_DIR/$2.git
