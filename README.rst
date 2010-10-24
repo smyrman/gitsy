@@ -3,8 +3,8 @@ What is GiTsY?
 ==============
 
 Do you ever operate on the same documents on multiple machines? Have you ever
-wiched that the document folder at work contained the same content as your
-document folder at home? Then gitsy might just be the tool for you!
+wished that the document folder at work contained the same content as your
+document folder at home? Then GiTsY might just be the tool for you!
 
 *WARNING*: This script was created for my own private usage, but it might be of
 use to others as well (for example you). It is only tested on Linux, since that
@@ -47,20 +47,18 @@ Given that you have used ssh-keygen and ssh-copy-id to allow no-password login
 to the remote host (Not required, but recommended as it will save you from
 typing your password a million times), You are ready to go!
 
-All the gitsy commands you need, are::
+All the GiTsY commands you need, are::
 
 $ gitsy init
-$ gitsy pull
-$ gitsy push
 $ gitsy clone
-$ gitsy help
+$ gitsy sync
 
 Moste commands are explained in detail below.
 
-gitsy init: Adding a directory to be synced by gitsy
+gitsy init: Adding a directory to be synced by GiTsY
 ----------------------------------------------------
 
-1. To setup a new directory to be synced by gitsy, do the following on your
+1. To setup a new directory to be synced by GiTsY, do the following on your
    local machine (given that the folder $HOME/project1 exist, and include some
    content other then empty folders)::
 
@@ -70,9 +68,11 @@ gitsy init: Adding a directory to be synced by gitsy
    repository at "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/project1.git". It will
    also use 'sed' to add project1 to the REPOS variable in "$HOME/.gitsyrc".
 
-2. Next thing is to push the repository to the remote host::
+2. Next thing is to sync the repository to the remote host::
 
     $ gitsy push
+    OR
+    $ gitsy sync
 
 *IMPORTANT*: If you wan't to initialize and add a repository for sync, not
 located in $HOME, you must do this manually::
@@ -84,11 +84,11 @@ located in $HOME, you must do this manually::
     $ cd
     $ edit .gitsyrc # add path/to/repo/projectx to REPOS (which is a bash array).
 
-gitsy clone: Initially download a synced repository to a new machine
---------------------------------------------------------------------
+gitsy clone: Initially download a repository to a new machine
+--------------------------------------------------------------
 
 1. On a second machine (say for instance at the machine configured as the
-   REMOTE_HOST on the first machine), setup gitsy as described in Install & configure.
+   REMOTE_HOST on the first machine), setup GiTsY as described in Install & configure.
    Set up REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or whatever folder you use instead
    of repos).
 
@@ -100,27 +100,30 @@ This will clone project1 to $HOME, and add project1 to REPOS.
 
 
 
-The rest of gitsy's commands
+The rest of GiTsY's commands
 ----------------------------
 
-The rest of gitsy's command's I will onliy explain briefly::
+The rest of GiTsY's command's I will onliy explain briefly::
 
-gitsy status - show a summary of all changes done so far
-gitsy pull   - pull changes from REMOTE_HOST
-gitsy push   - push changes to REMOTE_HOST
-gitsy sync   - a shortcut for "gitsy pull && gitsy push"
-gitsy help   - print help text
-
-====================
-OH NO, I SCREWED UP!
-====================
-
-Gitsy is simple and stupid, and if you do soemthing wrong, (like configuring an
-invalid host name) you will have to fix it yourself. Some recomendations::
-
-    $ edit $HOME/.gitconfig
-    $ edit path/to/your/project/.git/config
-    $ git help
+    gitsy status - show a summary of all changes done so far
+    gitsy sync   - a shortcut for "gitsy pull && gitsy push"
+    gitsy pull   - pull changes from REMOTE_HOST
+    gitsy push   - push changes to REMOTE_HOST
+    gitsy help   - print help text
 
 Some quick usage tips
 http://wiki.github.com/smyrman/gitsy/
+
+===============================
+Oh No! I (or GiTsY) Screwed up!
+===============================
+
+GiTsY is just a simple layer on top of git. If you do something wrong; like
+configuring an invalid REMOTE_HOST in *./gitsyrc* before you called the *gitsy
+init* command, you will have to correct the error in the projects' git
+repositories::
+
+    $ edit path/to/your/project/.git/config
+    $ edit $HOME/.gitconfig
+    $ git help
+

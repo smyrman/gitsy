@@ -29,18 +29,21 @@ function add2repos {
 case $1 in
 # Print help and exit
 help)
-	echo -e "USAGE:\n  gitsy SUBCOMMAND"
-	echo -e "Note that Gitsy is *never* affected by the pwd of the shell!"
+	echo -e "USAGE:\n  gitsy COMMAND"
+
+	echo -e "\nCOMMANDS:"
+	echo -e "  help        show this text"
+	echo -e "  status      Show a sumary og all changes done so far"
+	echo -e "  init REPO   Initialize new repo locally and on remote"
+	echo -e "  clone REPO  First-time clone of an existing repo from remote"
+	echo -e "  sync        A shortcut for \"gitsy pull && gitsy push\""
+	echo -e "  pull        pull all changes from REMOTE_HOST"
+	echo -e "  push        add and commit all changes, then push to REMOTE_HOST"
+
+	echo -e "\nNOTE: Gitsy commands are NOT affected by the \$PWD!"
 	echo -e "For the init command, note that REPO must be the name of a"\
 	        "folder in your home directory. To add folders outside your"\
 	        "home dir, see the README."
-	echo -e "\nAvailable SUBBCOMMANDS:"
-	echo -e "  help    show this text"
-	echo -e "  pull    update all repos from remote location"
-	echo -e "  push    add/commit all changes and push to remote location"
-	echo -e "  status  Show local status for all repos"
-	echo -e "  init REPO   Initialize new repo locally and on remote"
-	echo -e "  clone REPO  First-time clone of an existing repo from remote"
 	exit
 ;;
 
@@ -60,7 +63,15 @@ pull)
 		cd $HOME/$repo && git pull origin master
 	done
 ;;
-
+# pull AND push from/to origin/master (all repos)
+sync)
+	for repo in ${REPOS[@]}; do
+		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
+		cd $HOME/$repo && git pull origin master && git add . \
+		               && git commit -a -m "autocommit on $(date)"\
+		               && git push origin master
+	done
+;;
 # show git status for all repos
 status)
 	for repo in ${REPOS[@]}; do
