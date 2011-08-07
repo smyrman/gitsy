@@ -1,10 +1,10 @@
 ==============
-What is GiTsY?
+What is Gitsy?
 ==============
 
 Do you ever operate on the same documents on multiple computers? Have you ever
 wished that the document folder at work contained the same content as your
-document folder at home? Then GiTsY might just be the tool for you!
+document folder at home? Then Gisty might be the tool for you!
 
 *WARNING*: This script was created for my own private usage. It is only tested
 on Linux, since that is what I use. If you want to use it on other platforms,
@@ -58,7 +58,7 @@ mounted USB-pen or something like that!
 Usage
 =====
 
-All the GiTsY commands you need, are::
+All the Gitsy commands you need, are::
 
 $ gitsy init
 $ gitsy clone
@@ -67,10 +67,10 @@ $ gitsy sync
 Most commands are explained in detail below.
 
 
-gitsy init: Adding a directory to be synced by GiTsY
+gitsy init: Adding a directory to be synced by Gitsy
 ----------------------------------------------------
 
-1. To setup a new directory to be synced by GiTsY, do the following on your
+1. To setup a new directory to be synced by Gitsy, do the following on your
    local machine (given that the folder $HOME/project1 exist, and include some
    content other then empty folders)::
 
@@ -101,7 +101,7 @@ gitsy clone: Initially download a repository to a new machine
 --------------------------------------------------------------
 
 1. On a second machine (say for instance at the machine configured as the
-   REMOTE_HOST on the first machine), setup GiTsY as described in the *Install
+   REMOTE_HOST on the first machine), setup Gitsy as described in the *Install
    & configure* section. Set up REMOTE_HOST="", REMOTE_DIR="$HOME/repos" (or
    whatever folder you used when you configured the 1. client).
 
