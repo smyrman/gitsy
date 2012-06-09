@@ -1,4 +1,3 @@
-==============
 What is Gitsy?
 ==============
 
@@ -22,13 +21,18 @@ photos, music or videos.
 The license for this software is GPL2 (same license as Git).
 
 
-===================
-Install & configure
-===================
+Install
+=======
+
+Copy the *gitsy* bash script to somewhere on your PATH, and make sure it is executable.
+
+Archlinux users can also choose to install the *gitsy-git* package from AUR.
+
+Configure
+=========
 
 This step-by-step guide assumes basic knowledge of Git and Unix-like systems:
 
-1. Copy the gitsy bash script to somewhere on your PATH.
 2. Find a place to set up your bare repositories.
 3. Configure Git and clone all repositories to be synced by gitsy to somewhere on your computer.
 4. Create the file ~/.gitsyrc, and make it look something like this::
@@ -40,13 +44,13 @@ This step-by-step guide assumes basic knowledge of Git and Unix-like systems:
 A nice tip would be to create .gitignore files inside your repositories to
 avoid synchronizing editor backup files (.*~), hidden folders (.*), etc.
 
-=====
-Usage
-=====
+Use
+===
 
-For daily usage, you should only need the one command::
+For daily usage, the most interesting commands are::
 
 	$ gitsy sync   - Synchronize your repositories (auto commit, pull, push)
+	$ gitsy status - Show the status for all repositories
 
-To see what other commands gitsy offers, issue 'gitsy help'.
+To list the rest of the gitsy commands, issue 'gitsy help'.
 
