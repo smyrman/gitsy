@@ -27,7 +27,7 @@ help)
 push)
 	for repo in ${REPOS[@]}; do
 		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
-		cd "$HOME/$repo" && git add . && git commit -a -m "autocommit on $(date)"
+		cd "$HOME/$repo" && git add . && git commit -a -m "gitsy push"
 		cd "$HOME/$repo" && git push
 	done
 ;;
@@ -44,7 +44,7 @@ pull)
 sync)
 	for repo in ${REPOS[@]}; do
 		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
-		cd "$HOME/$repo" && git add . && git commit -a -m "autocommit on $(date)"
+		cd "$HOME/$repo" && git add . && git commit -a -m "gitsy sync"
 		cd "$HOME/$repo" && git pull
 		cd "$HOME/$repo" && git push
 	done
