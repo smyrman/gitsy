@@ -13,16 +13,13 @@ help)
 	echo -e "USAGE:\n  gitsy COMMAND"
 
 	echo -e "\nCOMMANDS:"
-	echo -e "  help        show this text"
-	echo -e "  status      Show a sumary og all changes done so far"
-	echo -e "  sync        Add any changes, then issue git pull followed by git push."
-	echo -e "  pull        pull all changes from remote host"
-	echo -e "  push        add and commit all changes, then push to remote host"
+	echo -e "  help      Show this text"
+	echo -e "  status    Show a sumary og all changes done so far"
+	echo -e "  sync      Add and commit all changes, then issue git pull followed by git push."
+	echo -e "  pull      Pull all changes from remote host"
+	echo -e "  push      Add and commit all changes, then push to remote host"
 
 	echo -e "\nNOTE: Gitsy commands are NOT affected by the \$PWD!"
-	echo -e "For the init command, note that REPO must be the name of a"\
-	        "folder in your home directory. To add folders outside your"\
-	        "home dir, see the README."
 	exit
 ;;
 
