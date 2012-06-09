@@ -2,7 +2,7 @@
 What is Gitsy?
 ==============
 
-Gitsy is a document synchronization tool based on Git. Basically it allows you
+Gitsy is a file synchronization tool based on Git. Basically it allows you
 to synchronize multiple git repositories simultaneously by the use of push,
 pull and automated commits.
 
