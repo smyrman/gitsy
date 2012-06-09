@@ -6,26 +6,7 @@
 source $HOME/.gitsyrc
 
 
-## Helper functions ##
-
-# Add repository to REPOS in ~/.gitsyrc
-function add2repos {
-	# Check if $1 is already in REPOS:
-	exists=false
-	for i in ${REPOS[@]}; do [[ "$i" == "$1" ]] && exists=true && break; done
-	# Add $1 to REPOS:
-	if [ $exists == false ]; then
-		echo "# Adding '$1' to REPOS in ~/.gitsyrc"
-		sed "s|^REPOS=(\(.*\))|REPOS=(\1 '$1')|" < $HOME/.gitsyrc > /tmp/gitsyrc
-		mv /tmp/gitsyrc $HOME/.gitsyrc
-	else
-		echo "# '$1' already in REPOS in ~/.gitsyrc"
-	fi
-}
-
-
 ## Main switch case (argument check) ##
-
 case $1 in
 # Print help and exit
 help)
@@ -34,11 +15,9 @@ help)
 	echo -e "\nCOMMANDS:"
 	echo -e "  help        show this text"
 	echo -e "  status      Show a sumary og all changes done so far"
-	echo -e "  init REPO   Initialize new repo locally and on remote"
-	echo -e "  clone REPO  First-time clone of an existing repo from remote"
-	echo -e "  sync        A shortcut for \"gitsy pull && gitsy push\""
-	echo -e "  pull        pull all changes from REMOTE_HOST"
-	echo -e "  push        add and commit all changes, then push to REMOTE_HOST"
+	echo -e "  sync        Add any changes, then issue git pull followed by git push."
+	echo -e "  pull        pull all changes from remote host"
+	echo -e "  push        add and commit all changes, then push to remote host"
 
 	echo -e "\nNOTE: Gitsy commands are NOT affected by the \$PWD!"
 	echo -e "For the init command, note that REPO must be the name of a"\
@@ -51,8 +30,8 @@ help)
 push)
 	for repo in ${REPOS[@]}; do
 		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
-		cd $HOME/$repo && git add . && git commit -a -m "autocommit on $(date)" && \
-			git push origin master
+		cd $HOME/$repo && git add . && git commit -a -m "autocommit on $(date)"
+		cd $HOME/$repo && git push origin master
 	done
 ;;
 
@@ -63,63 +42,22 @@ pull)
 		cd $HOME/$repo && git pull origin master
 	done
 ;;
+
 # pull AND push from/to origin/master (all repos)
 sync)
 	for repo in ${REPOS[@]}; do
 		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
-		cd $HOME/$repo && git pull origin master && git add . \
-		               && git commit -a -m "autocommit on $(date)"\
-		               && git push origin master
+		cd $HOME/$repo && git add . && git commit -a -m "autocommit on $(date)"\
+		cd $HOME/$repo && git pull origin master
+		cd $HOME/$repo && git push origin master
 	done
 ;;
+
 # show git status for all repos
 status)
 	for repo in ${REPOS[@]}; do
 		echo -e "\n\e[1;32m## Repository located at '$HOME/$repo' ##\e[m"
 		cd $HOME/$repo && git status
 	done
-;;
-
-# initialize a new repository locally, and at remote. Add the new repository to
-# REPOS in .gitsyrc
-init)
-	[[ "$2" == "" ]] && \
-		echo -e "$0: REPO must be specifed! (Try '$0 help')" && exit 1
-	cd $HOME/$2
-	echo "# Initializing repo at localhost"
-	git init
-	if [ "$REMOTE_HOST" ]; then
-		echo "# Initializing bare repo at $REMOTE_HOST"
-		ssh $REMOTE_USER@$REMOTE_HOST git init --bare $REMOTE_DIR/$2.git
-		git remote add origin $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/$2.git
-	else
-		echo "# Initializing bare repo at localhost"
-		git init --bare $REMOTE_DIR/$2.git
-		git add remote origin $REMOTE_DIR/$2.git
-	fi
-	echo "# Performing '$ git add .' at localhost"
-	git add .
-	# Add $2 to REPOS:
-	add2repos "$2"
-;;
-
-# Clone an existing repository from remote. Add the repository to REPOS in
-# .gitsyrc
-clone)
-	[[ "$2" == "" ]] && \
-		echo -e "$0: REPO must be specifed! (Try '$0 help')" && exit 1
-	cd $HOME
-	if [ "$REMOTE_HOST" ]; then
-		git clone $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/$2.git
-	else
-		git clone $REMOTE_DIR/$2.git
-	fi
-	# Add $2 to REPOS:
-	add2repos "$2"
-;;
-
-# Invalid  or missing command
-*)
-	echo "$0: Subcommand '$1' not found! (Try '$0 help')" && exit 1
 ;;
 esac
