@@ -26,14 +26,14 @@ Install & configure
 
 This guide assumes basic knowledge of Git and Unix-like systems.
 
- 1. Copy the gitsy bash script to somewhere on your PATH.
- 2. Find a place to set up your bare repositories.
- 3. Configure Git and clone all repositories to be synced by gitsy to somewhere on your computer.
- 4. Create the file ~/.gitsyrc, and make it look something like this::
+1. Copy the gitsy bash script to somewhere on your PATH.
+2. Find a place to set up your bare repositories.
+3. Configure Git and clone all repositories to be synced by gitsy to somewhere on your computer.
+4. Create the file ~/.gitsyrc, and make it look something like this::
 
-    # file ~/.gitsyrc
-    # All paths in REPOS should be given relative to your home folder.
-    REPOS = ('doc' '.config' 'some/deep/path')
+	# file ~/.gitsyrc
+	# All paths in REPOS should be given relative to your home folder.
+	REPOS = ('doc' '.config' 'some/deep/path')
 
 A nice tip would be to create .gitignore files inside your repositories to
 avoid synchronizing editor backup files (.*~), hidden folders (.*), etc.
@@ -42,10 +42,9 @@ avoid synchronizing editor backup files (.*~), hidden folders (.*), etc.
 Usage
 =====
 
-The most commonly used command will be:
+For daily usage, you should only need the one command::
 
-$ gitsy sync   - Synchronize your repositories (auto commit, pull, push)
-$ gitsy status - Show the Git status for all repositories
+	$ gitsy sync   - Synchronize your repositories (auto commit, pull, push)
 
 To see what other commands gitsy offers, issue 'gitsy help'.
 
