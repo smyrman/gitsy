@@ -12,9 +12,9 @@ manually from the command line.
 
 It is possible to set up a cron job to run 'gitsy sync' regularly, but this would
 make it harder for you to discover merge conflicts. A better approach would be to
-create GUI frontend to Gitsy that creates a message for merge conflicts and
-updates (please feel free to contact me if you are interested in developing such
-a thing).
+create GUI frontend to Gitsy that creates messages for merge conflicts, errors
+and updates (please feel free to contact me if you are interested in developing
+such a thing).
 
 I would not recommend you to use gitsy to sync large binary files such as
 photos, music or videos.
