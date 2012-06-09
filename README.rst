@@ -26,7 +26,7 @@ The license for this software is GPL2 (same license as Git).
 Install & configure
 ===================
 
-This guide assumes basic knowledge of Git and Unix-like systems.
+This step-by-step guide assumes basic knowledge of Git and Unix-like systems:
 
 1. Copy the gitsy bash script to somewhere on your PATH.
 2. Find a place to set up your bare repositories.
